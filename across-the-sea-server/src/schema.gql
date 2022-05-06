@@ -1,0 +1,266 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Category {
+  description: String!
+  id: Int!
+  image: String!
+  name: String!
+  products: [Product!]!
+}
+
+input CreateCategoryInput {
+  description: String!
+  image: String!
+  name: String!
+}
+
+input CreateFarmerInput {
+  bio: String!
+  company: String!
+  firstName: String!
+  lastName: String!
+  logo: String!
+  website: String!
+}
+
+input CreateOrderInput {
+  status: String!
+  total: Float!
+}
+
+input CreatePaymentInput {
+  method: String!
+  orderId: Int!
+  userId: Int!
+}
+
+input CreateProductInput {
+  categoryId: Int!
+  description: String!
+  farmerId: Int!
+  image: String!
+  name: String!
+  price: Int!
+}
+
+input CreateProfileInput {
+  birthday: String
+  country: String
+  firstName: String
+  gender: String
+  houseNumber: String
+  lastName: String
+  profilePicture: String
+  street: String
+  telephoneNumber: Float
+  zipCode: String
+}
+
+input CreateReviewInput {
+  productId: Int!
+  rating: Int!
+  text: String!
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  profileId: Int
+  username: String!
+}
+
+type Farmer {
+  bio: String!
+  company: String!
+  firstName: String!
+  id: Int!
+  lastName: String!
+  logo: String!
+  products: [Product!]!
+  website: String!
+}
+
+type Mutation {
+  addProductToOrder(orderId: Int!, productId: Int!): Order!
+  createCategory(createCategoryInput: CreateCategoryInput!): Category!
+  createFarmer(createFarmerInput: CreateFarmerInput!): Farmer!
+  createOrder(createOrderInput: CreateOrderInput!): Order!
+  createPayment(createPaymentInput: CreatePaymentInput!): Payment!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  createProfile(createProfileInput: CreateProfileInput!): Profile!
+  createReview(createReviewInput: CreateReviewInput!): Review!
+  createUser(createUserInput: CreateUserInput!): User!
+  deleteCategory(id: Int!): Category!
+  deleteFarmer(id: Int!): Farmer!
+  deleteOrder(id: Int!): Order!
+  deleteProduct(id: Int!): Product!
+  deleteReview(id: Int!): Review!
+  removePayment(id: Int!): Payment!
+  removeProductToOrder(orderId: Int!, productId: Int!): Order!
+  removeProfile(id: Int!): Profile!
+  removeUser(id: Int!): User!
+  updateCategory(updateCategoryInput: UpdateCategoryInput!): Category!
+  updateFarmer(updateFarmerInput: UpdateFarmerInput!): Farmer!
+  updateOrder(updateOrderInput: UpdateOrderInput!): Order!
+  updatePayment(updatePaymentInput: UpdatePaymentInput!): Payment!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  updateProfile(updateProfileInput: UpdateProfileInput!): Profile!
+  updateReview(updateReviewInput: UpdateReviewInput!): Review!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+}
+
+type Order {
+  id: Int!
+  payments: [Payment!]!
+  products: [Product!]!
+  status: String!
+  total: Int!
+}
+
+type Payment {
+  id: Int!
+  method: String!
+  order: Order!
+  orderId: Int!
+  user: User!
+  userId: Int!
+}
+
+type Product {
+  category: Category!
+  categoryId: Int!
+  description: String!
+  farmer: Farmer!
+  farmerId: Int!
+  id: Int!
+  image: String!
+  name: String!
+  orders: [Order!]
+  price: Int!
+  reviews: [Review!]!
+}
+
+type Profile {
+  birthday: String
+  country: String
+  firstName: String
+  gender: String
+  houseNumber: String
+  id: Int!
+  lastName: String
+  profilePicture: String
+  street: String
+  telephoneNumber: Float
+  user: User!
+  zipCode: String
+}
+
+type Query {
+  categories: [Category!]!
+  farmers: [Farmer!]!
+  findUserByEmail(email: String!): [User!]!
+  getCategory(id: Int!): Category!
+  getFarmer(id: Int!): Farmer!
+  getOrder(id: Int!): Order!
+  getProduct(id: Int!): Product!
+  getReview(id: Int!): Review!
+  getSpecificProducts(name: String!): [Product!]!
+  orders: [Order!]!
+  payment(id: Int!): Payment!
+  payments: [Payment!]!
+  products: [Product!]!
+  profile(id: Int!): Profile!
+  profiles: [Profile!]!
+  reviews: [Review!]!
+  user(id: Int!): User!
+  users: [User!]!
+}
+
+type Review {
+  id: Int!
+  product: Product!
+  productId: Int!
+  rating: Float!
+  text: String!
+}
+
+input UpdateCategoryInput {
+  description: String
+  id: Int!
+  image: String
+  name: String
+}
+
+input UpdateFarmerInput {
+  bio: String
+  company: String
+  firstName: String
+  id: Int!
+  lastName: String
+  logo: String
+  website: String
+}
+
+input UpdateOrderInput {
+  id: Int!
+  status: String
+  total: Float
+}
+
+input UpdatePaymentInput {
+  id: Int!
+  method: String
+  orderId: Int
+  userId: Int
+}
+
+input UpdateProductInput {
+  categoryId: Int
+  description: String
+  farmerId: Int
+  id: Int!
+  image: String
+  name: String
+  price: Int
+}
+
+input UpdateProfileInput {
+  birthday: String
+  country: String
+  firstName: String
+  gender: String
+  houseNumber: String
+  id: Int!
+  lastName: String
+  profilePicture: String
+  street: String
+  telephoneNumber: Float
+  zipCode: String
+}
+
+input UpdateReviewInput {
+  id: Int!
+  productId: Int
+  rating: Int
+  text: String
+}
+
+input UpdateUserInput {
+  email: String
+  id: Int!
+  password: String
+  profileId: Int
+  username: String
+}
+
+type User {
+  email: String!
+  id: Int!
+  password: String!
+  payments: [Payment!]!
+  profile: Profile!
+  profileId: Int!
+  username: String!
+}
